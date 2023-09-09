@@ -1,0 +1,187 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++.exe - Debug build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fcolor-diagnostics",
+				"-ftime-trace",
+				"-fansi-escape-codes",
+				"-fms-extensions",
+				"-pedantic-errors",
+				"-Wall",
+				"-Weffc++",
+				"-Wextra",
+				// "-Wsign-conversion",
+				"-Werror",
+				"-Wshadow",
+				"-Wno-gnu-anonymous-struct",
+				"-Wno-gnu-zero-variadic-macro-arguments",
+				"-Wno-nested-anon-types",
+				"-Wno-nullability-extension",
+				"-Wno-nullability-completeness",
+				"-Wno-unused-parameter",
+				"-Wno-unused-variable",
+				"-Wno-missing-field-initializers",
+				// "-DNDEBUG", // remove assertions, etc.
+				"-DWIN32",
+				"-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH",
+				// "-DTESTDEFINE",   // this is how you do build-time custom defines
+				// "-DTESTDEFINE=1", // or like this
+				// "${fileDirname}\\**.cpp", // recursively include files
+				"-I${workspaceFolder}\\src",
+				"-I${workspaceFolder}\\include",
+				"-L${workspaceFolder}\\lib",
+				"-lglfw3dll", // from lib-vc2022, non-dll won't work with clang?
+				"-I${VULKAN_SDK}\\include",
+				"-L${VULKAN_SDK}\\lib",
+				"-lvulkan-1",
+				// "-include-pch",
+				// "${workspaceFolder}\\pch\\_incl_global.hpp.pch",
+				"-std=c++17",
+				"--target=x86_64-win32",
+				// "-v", //verbose
+				"${workspaceFolder}\\src\\platform\\_platform.cpp",
+				"${workspaceFolder}\\src\\VLK\\_vlk.cpp",
+				"${workspaceFolder}\\src\\game\\_game.cpp",
+				"${workspaceFolder}\\src\\_incl_imgui.cpp",
+				"-g",
+				"${workspaceFolder}\\src\\main.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\main.exe",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++.exe - Release build",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-fcolor-diagnostics",
+				"-fansi-escape-codes",
+				"-fms-extensions",
+				"-O3",
+				"-DNDEBUG",
+				"-DWIN32",
+				"-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH",
+				// "-DTESTDEFINE",   // this is how you do build-time custom defines
+				// "-DTESTDEFINE=1", // or like this
+				// "${fileDirname}\\**.cpp", // recursively include files
+				"-I${workspaceFolder}\\src",
+				"-I${workspaceFolder}\\include",
+				"-L${workspaceFolder}\\lib",
+				"-lglfw3dll", // from lib-vc2022, non-dll won't work with clang?
+				"-I${VULKAN_SDK}\\include",
+				"-L${VULKAN_SDK}\\lib",
+				"-lvulkan-1",
+				"-std=c++17",
+				"--target=x86_64-win32",
+				// less compacted translation units = favor binary optimisation???
+				"${workspaceFolder}\\src\\game\\input.cpp",
+				"${workspaceFolder}\\src\\game\\player.cpp",
+				"${workspaceFolder}\\src\\game\\ui.cpp",
+				"${workspaceFolder}\\src\\game\\utility.cpp",
+				"${workspaceFolder}\\src\\game\\game.cpp",
+				"${workspaceFolder}\\src\\game\\question01.cpp",
+				"${workspaceFolder}\\src\\game\\question02_compSys.cpp",
+				"${workspaceFolder}\\src\\game\\question03.cpp",
+				"${workspaceFolder}\\src\\game\\question04.cpp",
+				"${workspaceFolder}\\src\\game\\question05.cpp",
+				"${workspaceFolder}\\src\\game\\question06_servMan.cpp",
+				"${workspaceFolder}\\src\\game\\question07.cpp",
+				"${workspaceFolder}\\src\\game\\question08.cpp",
+				"${workspaceFolder}\\src\\game\\question09_corpLegal.cpp",
+				"${workspaceFolder}\\src\\platform\\renderer.cpp",
+				"${workspaceFolder}\\src\\platform\\window.cpp",
+				"${workspaceFolder}\\src\\platform\\utility.cpp",
+				"${workspaceFolder}\\src\\platform\\imgui.cpp",
+				"${workspaceFolder}\\src\\platform\\timing.cpp",
+				"${workspaceFolder}\\src\\VLK\\types.cpp",
+				"${workspaceFolder}\\src\\VLK\\swapchain.cpp",
+				"${workspaceFolder}\\src\\VLK\\device.cpp",
+				"${workspaceFolder}\\src\\VLK\\memory.cpp",
+				"${workspaceFolder}\\src\\VLK\\debug.cpp",
+				"${workspaceFolder}\\src\\VLK\\instance.cpp",
+				"${workspaceFolder}\\src\\VLK\\image.cpp",
+				"${workspaceFolder}\\src\\VLK\\command.cpp",
+				"${workspaceFolder}\\src\\VLK\\pipeline.cpp",
+				"${workspaceFolder}\\src\\VLK\\descriptor.cpp",
+				"${workspaceFolder}\\src\\VLK\\cleanup.cpp",
+				"${workspaceFolder}\\src\\VLK\\imgui.cpp",
+				"${workspaceFolder}\\src\\VLK\\vulkan.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_demo.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_draw.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_tables.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_widgets.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_impl_vulkan.cpp",
+				"${workspaceFolder}\\include\\imgui\\imgui_impl_glfw.cpp",
+				// "${workspaceFolder}\\src\\platform\\_platform.cpp",
+				// "${workspaceFolder}\\src\\VLK\\_vlk.cpp",
+				// "${workspaceFolder}\\src\\game\\_game.cpp",
+				// "${workspaceFolder}\\src\\_incl_imgui.cpp",
+				"-g",
+				"${workspaceFolder}\\src\\main.cpp",
+				"-o",
+				"${workspaceFolder}\\bin\\main.exe",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+		{
+			"label": "Compile Shaders",
+			"type": "shell",
+			"command": "./compile-shaders.bat",
+			"windows": {
+				"command": ".\\compile-shaders.bat"
+			},
+			"group": "build",
+			"detail": "compiler: Vulkan glslc.exe"
+		},
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++.exe - Compile PCH",
+			"command": "C:\\Program Files\\LLVM\\bin\\clang++.exe",
+			"args": [
+				"-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH",
+				"-I${workspaceFolder}\\src",
+				"-I${workspaceFolder}\\include",
+				"-I${VULKAN_SDK}\\include",
+				"-std=c++17",
+				// "--target=x86_64-win32",
+				"-c",
+				"-o",
+				"${workspaceFolder}\\pch\\_incl_global.hpp.pch",
+				"${workspaceFolder}\\src\\_incl_global.hpp",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build"
+			},
+			"detail": "compiler: \"C:\\Program Files\\LLVM\\bin\\clang++.exe\""
+		},
+	]
+}
